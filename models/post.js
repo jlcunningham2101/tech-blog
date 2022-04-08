@@ -1,6 +1,6 @@
 //declare related variables
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("./config/connection.js");
+const sequelize = require("../config/connection.js");
 
 //create the model for Post
 class Post extends Model {}
@@ -25,7 +25,7 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        models: "user",
+        model: "user",
         key: "id",
       },
     },

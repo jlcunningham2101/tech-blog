@@ -1,6 +1,6 @@
 //declare related variables
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("./config/connection.js");
+const sequelize = require("../config/connection");
 
 //create the model for Comment
 class Comment extends Model {}
@@ -18,7 +18,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        models: "user",
+        model: "user",
         key: "id",
       },
     },
@@ -26,6 +26,14 @@ Comment.init(
     comment: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    post_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: "post",
+        key: "id",
+      },
     },
     //post date created
     postCreated: {
