@@ -23,7 +23,7 @@ Comment.init(
       },
     },
     //post comments
-    comment: {
+    comment_text: {
       type: DataTypes.STRING,
       allowNull: false,
     },
