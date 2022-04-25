@@ -7,11 +7,11 @@ const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   console.log("======================");
   Post.findAll({
-    attributes: ["id", "title", "created_at"],
+    attributes: ["id", "postTitle", "user_id", "contents", "postCreated"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "user_id", "comment_text", "post_id", "postCreated"],
         include: {
           model: User,
           attributes: ["username"],
@@ -36,11 +36,11 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "created_at"],
+    attributes: ["id", "postTitle", "postCreated"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "post_id", "user_id", "postCreated"],
         include: {
           model: User,
           attributes: ["username"],
@@ -68,9 +68,10 @@ router.get("/:id", (req, res) => {
 //create a user post
 router.post("/", withAuth, (req, res) => {
   Post.create({
-    title: req.body.title,
-    post_text: req.body.post_text,
+    postTitle: req.body.postTitle,
     user_id: req.session.user_id,
+    contents: req.body.contents,
+    postCreated: req.body.postCreated,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -83,7 +84,7 @@ router.post("/", withAuth, (req, res) => {
 router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
-      title: req.body.title,
+      postTitle: req.body.postTitle,
     },
     {
       where: {
@@ -93,7 +94,7 @@ router.put("/:id", withAuth, (req, res) => {
   )
     .then((dbPostData) => {
       if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id" });
+        res.status(404).json({ message: "Your post has been updated!" });
         return;
       }
       res.json(dbPostData);
