@@ -7,7 +7,6 @@
 - [User-Story](#user-story)
 - [Acceptance-Criteria](#acceptance-criteria)
 - [Usage](#usage)
-- [Webpage-Screenshots](#webpage-screenshots)
 - [Github-Link](#github-link)
 - [Deployed-Link](#deployed-link)
 - [Contributor](#contributor)
@@ -77,13 +76,9 @@ Application users will need Handlebars.js as the templating language, Sequelize 
 
 Users will also need the dotenv package to use environment variables, the bcrypt package to hash passwords, and the express-session and connect-session-sequelize packages to add authentication
 
-### Webpage Screenshots
-
 ### GitHub Link
 
 https://github.com/jlcunningham2101/tech-blog.git
-
-### Heroku Link
 
 ### Contributor
 
