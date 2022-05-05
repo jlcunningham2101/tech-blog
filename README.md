@@ -78,6 +78,7 @@ Users will also need the dotenv package to use environment variables, the bcrypt
 
 ### GitHub Link
 
+https://jlcunningham2101.github.io/tech-blog/
 https://github.com/jlcunningham2101/tech-blog.git
 
 ### Contributor
